@@ -1,0 +1,33 @@
+# Build outputs
+*.o
+*.out
+*.exe
+cts/cts
+legalization/legalizer
+mlrcs/mlrcs
+
+# Generated logs/results
+*.log
+*.plt
+*_output.*
+gurobi_ilp.log
+
+# Archives and coursework submissions
+*.tar.gz
+*.tgz
+*.zip
+
+# Benchmarks / private course materials should not be committed
+bench/
+benchmark/
+case/
+aoi_benchmark/
+results/
+docs/*.pdf
+*.blif
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
