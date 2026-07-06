@@ -4,6 +4,17 @@ Coursework implementation of a clock tree synthesis flow.
 
 ## Build
 
+This public repository does not bundle FLUTE source or lookup-table data. To build the CTS project, obtain FLUTE from its original source and place the required files in this directory:
+
+- `flute.cpp`
+- `flute.h`
+- `flute_int.h`
+- `flute_malloc.h`
+- `PORT9.dat`
+- `POWV9.dat`
+
+Then build:
+
 ```bash
 g++ -std=c++11 cts.cpp ClockTree.cpp Line.cpp Point.cpp flute.cpp -o cts
 ```
@@ -18,4 +29,4 @@ Benchmark inputs and official course materials are intentionally not included in
 
 ## FLUTE Attribution
 
-This project uses FLUTE, originally by Dr. Chris C. N. Chu, Iowa State University, with later public-use modifications credited in the source headers. Keep the FLUTE attribution and license notes when reusing this code.
+This project was developed against FLUTE, originally by Dr. Chris C. N. Chu, Iowa State University, with later public-use modifications commonly distributed with attribution in the source headers. Because redistribution terms must be verified separately, this cleaned public repository does not include FLUTE source or lookup-table data.

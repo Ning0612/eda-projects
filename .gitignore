@@ -25,6 +25,12 @@ aoi_benchmark/
 results/
 docs/*.pdf
 *.blif
+cts/flute.cpp
+cts/flute.h
+cts/flute_int.h
+cts/flute_malloc.h
+cts/PORT9.dat
+cts/POWV9.dat
 
 # OS / editor
 .DS_Store

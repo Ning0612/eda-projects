@@ -16,6 +16,7 @@ This repository intentionally does **not** redistribute:
 - benchmark suites, hidden cases, or grading data
 - submission archives
 - scores, ranks, or private grading feedback
+- third-party source/data files whose redistribution terms are unclear
 
 Only self-written source code, attribution notes, and high-level problem descriptions are included. Any result discussion should use sanitized summaries that do not reconstruct unauthorized benchmark content.
 
@@ -23,7 +24,7 @@ Only self-written source code, attribution notes, and high-level problem descrip
 
 | Directory | Problem | Implementation Notes |
 |---|---|---|
-| `cts/` | Build a clock tree connecting sinks while controlling wirelength/skew-related structure. | C++ implementation using FLUTE for rectilinear Steiner tree estimation/routing support. FLUTE attribution is preserved in source headers. |
+| `cts/` | Build a clock tree connecting sinks while controlling wirelength/skew-related structure. | C++ implementation designed to use FLUTE for rectilinear Steiner tree estimation/routing support. FLUTE source and LUT files are not bundled; see `cts/README.md`. |
 | `legalization/` | Move cells from an initial placement into legal row/subrow positions while minimizing displacement. | C++ implementation organized around rows, subrows, components, and placement parsing. |
 | `mlrcs/` | Schedule logic operations under resource constraints. | C++ implementation with heuristic scheduling and an ILP path using Gurobi. Gurobi is not bundled; users must provide their own installation/license. |
 
