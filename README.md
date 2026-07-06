@@ -28,6 +28,13 @@ Only self-written source code, attribution notes, and high-level problem descrip
 | `legalization/` | Move cells from an initial placement into legal row/subrow positions while minimizing displacement. | C++ implementation organized around rows, subrows, components, and placement parsing. |
 | `mlrcs/` | Schedule logic operations under resource constraints. | C++ implementation with heuristic scheduling and an ILP path using Gurobi. Gurobi is not bundled; users must provide their own installation/license. |
 
+## Visuals
+
+| Project | Example |
+|---|---|
+| Clock Tree Synthesis | ![Clock tree example with green clock source and purple clock sinks](assets/cts-clock-tree.png) |
+| Placement Legalization | ![Placement before and after legalization](assets/legalization-before-after.png) |
+
 ## Build Notes
 
 Each project keeps its own minimal build instructions in its subdirectory. Toolchains were developed for a Unix-like C++ environment; Windows users may need WSL2 or MSYS2.

@@ -2,6 +2,10 @@
 
 Coursework implementation of standard-cell placement legalization.
 
+![Placement before and after legalization](../assets/legalization-before-after.png)
+
+Left: before legalization, cells are scattered and overlap. Right: after legalization, cells are aligned to rows and no longer overlap.
+
 ## Build
 
 ```bash

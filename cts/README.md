@@ -2,6 +2,10 @@
 
 Coursework implementation of a clock tree synthesis flow.
 
+![Clock tree example](../assets/cts-clock-tree.png)
+
+The green point marks the clock source. Purple points are clock sinks. The black rectilinear segments show the generated clock-tree topology.
+
 ## Build
 
 This public repository does not bundle FLUTE source or lookup-table data. To build the CTS project, obtain FLUTE from its original source and place the required files in this directory:
