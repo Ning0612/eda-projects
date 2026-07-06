@@ -44,3 +44,7 @@ Each project keeps its own minimal build instructions in its subdirectory. Toolc
 Developed as CAD/EDA coursework at National Taiwan University of Science and Technology.
 
 Author: Ning (Cheng-Ning Wang)
+
+## License
+
+This cleaned public version is released under the MIT License. Third-party tools and external dependencies used by the coursework remain under their own licenses and are not redistributed here.
