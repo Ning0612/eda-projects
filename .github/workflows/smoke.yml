@@ -1,0 +1,45 @@
+name: smoke
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build placement legalizer
+        working-directory: legalization
+        run: |
+          g++ -std=c++11 -Wall -Wextra CellRow.cpp Component.cpp Placement.cpp Point.cpp SubRow.cpp legalizer.cpp -o legalizer
+
+      - name: Run placement toy case
+        working-directory: legalization
+        run: |
+          mkdir -p /tmp/legalization-output
+          ./legalizer examples/toy-overlap/input /tmp/legalization-output/output
+          test -f /tmp/legalization-output/output.pl
+          grep -q "cell_a" /tmp/legalization-output/output.pl
+          grep -q "cell_b" /tmp/legalization-output/output.pl
+
+      - name: Build ML-RCS heuristic mode
+        working-directory: mlrcs
+        run: make
+
+      - name: Run ML-RCS toy cases
+        working-directory: mlrcs
+        run: |
+          ./mlrcs -h examples/two_level.blif 1 1 1 | tee /tmp/mlrcs-two-level.txt
+          grep -q "LATENCY: 2" /tmp/mlrcs-two-level.txt
+          ./mlrcs -h examples/resource_pressure.blif 1 1 1 | tee /tmp/mlrcs-resource.txt
+          grep -q "LATENCY: 3" /tmp/mlrcs-resource.txt
+
+      - name: Compile CTS sources that do not require FLUTE
+        working-directory: cts
+        run: |
+          g++ -std=c++11 -Wall -Wextra -c Point.cpp Line.cpp
+          g++ -std=c++11 -Wall -Wextra examples/case_gen.cpp -o /tmp/cts_case_gen
+          /tmp/cts_case_gen 100 100 8 /tmp/generated.cts 1
+          grep -q "^\.p 8" /tmp/generated.cts

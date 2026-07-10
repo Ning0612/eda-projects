@@ -6,9 +6,13 @@
 #include <set>
 #include <algorithm>
 #include <queue>
+#include <stdexcept>
 
-#include "gurobi_c++.h"
 #include "Scheduler.hpp"
+
+#ifdef USE_GUROBI
+#include "gurobi_c++.h"
+#endif
 
 Scheduler::Scheduler(std::string blifFile, int maxAnd, int maxOr, int maxNot)
 {
@@ -333,6 +337,9 @@ void Scheduler::ALAP(){
 }
 
 void Scheduler::ILPScheduling() {
+#ifndef USE_GUROBI
+    throw std::runtime_error("ILP mode requires building with USE_GUROBI=1 and a valid Gurobi installation.");
+#else
     this->ASAP();
     this->ALAP();
 
@@ -469,6 +476,7 @@ void Scheduler::ILPScheduling() {
     } catch (...) {
         std::cerr << "Exception during optimization" << std::endl;
     }
+#endif
 }
 
 void Scheduler::printAllComponents()

@@ -6,6 +6,14 @@ Coursework implementation of a clock tree synthesis flow.
 
 The green point marks the clock source. Purple points are clock sinks. The black rectilinear segments show the generated clock-tree topology.
 
+## Algorithm
+
+The flow reads a source point, sink points, and core dimensions, then builds a rectilinear tree and reports the result as line segments. `Point` is the integer grid coordinate primitive, `Line` stores horizontal or vertical routing segments and provides distance/intersection helpers, and `ClockTree` owns the source/sink set, generated edges, skew metrics, and candidate construction strategies.
+
+`tryBest()` uses a fixed fallback sequence rather than a global optimizer. It first evaluates an H-tree-like recursive partitioning candidate. If that candidate is invalid, it rebuilds and evaluates a FLUTE-based rectilinear Steiner tree candidate. If FLUTE is also invalid, it falls back to a simpler brute-force tree. FLUTE supplies compact low-wirelength topology support, while the H-tree-like candidate is used as the first skew-oriented construction attempt.
+
+The core trade-off is wirelength versus skew. FLUTE tends to reduce rectilinear wirelength, but a wirelength-oriented Steiner tree can produce uneven source-to-sink path lengths. The H-tree-like path is more skew-oriented but can spend more wire. The benchmark step therefore tracks minimum and maximum source-to-sink path distance, skew ratio, total routed length, and crossing validity. At coursework scale, the expensive steps are dominated by tree construction plus repeated shortest-path checks across generated segments; for `n` sinks and `e` line segments, validation is roughly proportional to `n` graph searches over `e` edges.
+
 ## Build
 
 This public repository does not bundle FLUTE source or lookup-table data. To build the CTS project, obtain FLUTE from its original source and place the required files in this directory:
@@ -27,6 +35,15 @@ g++ -std=c++11 cts.cpp ClockTree.cpp Line.cpp Point.cpp flute.cpp -o cts
 
 ```bash
 ./cts INPUT_FILE OUTPUT_FILE
+```
+
+See `examples/tiny.cts` for a small synthetic input. It is hand-written for public smoke testing and does not come from any official benchmark.
+
+The repository also includes a tiny synthetic case generator derived from the original coursework utility, cleaned so generated cases can be written outside the repository. Pass an explicit seed for reproducible output:
+
+```bash
+g++ -std=c++11 examples/case_gen.cpp -o case_gen
+./case_gen 100 100 8 /tmp/generated.cts 1
 ```
 
 Benchmark inputs and official course materials are intentionally not included in the public repository.

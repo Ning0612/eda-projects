@@ -5,6 +5,7 @@
 #include <map>
 #include <queue>
 #include <algorithm>
+#include <stdexcept>
 
 #include "Scheduler.hpp"
 
@@ -28,7 +29,12 @@ int main(int argc, char *argv[]) {
         scheduler.printScheduleResult();
     } else if(mode == "-e") {
         scheduler.listScheduling();
-        scheduler.ILPScheduling();
+        try {
+            scheduler.ILPScheduling();
+        } catch (const std::runtime_error& e) {
+            std::cerr << e.what() << std::endl;
+            return 1;
+        }
         scheduler.printILPResult();
 
         if(!scheduler.checkILPResult()) {

@@ -1,0 +1,6 @@
+UCLA nodes 1.0
+NumNodes : 3
+NumTerminals : 1
+cell_a 10 10
+cell_b 10 10
+pin_fixed 10 10 terminal

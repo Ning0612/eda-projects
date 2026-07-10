@@ -25,6 +25,8 @@ aoi_benchmark/
 results/
 docs/*.pdf
 *.blif
+!mlrcs/examples/
+!mlrcs/examples/*.blif
 cts/flute.cpp
 cts/flute.h
 cts/flute_int.h
