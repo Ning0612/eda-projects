@@ -7,6 +7,7 @@ Cleaned public versions of three EDA/CAD coursework projects:
 - `mlrcs/` - Multi-level Resource-Constrained Scheduling
 
 > Coursework, cleaned public version. These are academic-scale implementations for learning and interview discussion, not production EDA tools.
+> These projects come from 113.1 NTUST CS5140701 Computer-Aided Design for VLSI Systems coursework. The public cleanup is complete; this repository is not planned for ongoing maintenance.
 
 ## Public Release Boundary
 
