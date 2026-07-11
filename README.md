@@ -2,6 +2,8 @@
 
 Cleaned public versions of three EDA/CAD coursework projects:
 
+> **課程專案**：國立臺灣科技大學｜113.1｜CS5140701｜電腦輔助晶片系統設計｜三項課程作業合併
+
 - `cts/` - Clock Tree Synthesis
 - `legalization/` - Placement Legalization
 - `mlrcs/` - Multi-level Resource-Constrained Scheduling
@@ -41,12 +43,6 @@ Only self-written source code, attribution notes, and high-level problem descrip
 Each project keeps its own minimal build instructions in its subdirectory. Toolchains were developed for a Unix-like C++ environment; Windows users may need WSL2 or MSYS2.
 
 The repository includes a GitHub Actions smoke workflow that builds the public-dependency paths, runs synthetic placement and ML-RCS toy cases, and compiles the CTS sources that do not require FLUTE. The toy cases are hand-written and intentionally separate from any official benchmark data.
-
-## Attribution
-
-Developed as CAD/EDA coursework at National Taiwan University of Science and Technology.
-
-Author: Ning (Cheng-Ning Wang)
 
 ## License
 
