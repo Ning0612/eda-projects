@@ -36,4 +36,18 @@ The input argument is a basename without extension. For example:
 
 `examples/toy-overlap/` is a hand-written synthetic case with two overlapping movable cells and one fixed terminal. It is intended for smoke testing only.
 
+## Input format
+
+Pass a basename without an extension. A complete run requires five files with that basename. The algorithm parses the first three and copies `.nets` / `.wts` unchanged into the output bundle:
+
+| File | Required record shape | Meaning |
+|---|---|---|
+| `<base>.nodes` | `<name> <width> <height> [terminal]` | Cell dimensions; the optional `terminal` token marks a fixed component. Header lines are ignored. |
+| `<base>.pl` | `<name> <x> <y> : <orientation> [/FIXED]` | Initial lower-left coordinate and orientation for each component. The optional `/FIXED` suffix is accepted; fixedness is determined from the `terminal` marker in `.nodes`. |
+| `<base>.scl` | `CoreRow` sections containing `Coordinate`, `Height`, `Sitewidth`, `Sitespacing`, `Siteorient`, `Sitesymmetry`, and `SubrowOrigin ... NumSites` | Legal row geometry and subrow capacity. |
+| `<base>.nets` | Bookshelf-style nets file | Required for the output bundle and copied without parsing. |
+| `<base>.wts` | Bookshelf-style weights file | Required for the output bundle and copied without parsing. |
+
+For example, `examples/toy-overlap/input` expands to all five files in the sample directory. The parser accepts numeric coordinates and dimensions, including decimal values.
+
 The public version excludes benchmark suites, official course specifications, and grading data. It is intended to show the implementation structure and algorithmic approach at coursework scale.

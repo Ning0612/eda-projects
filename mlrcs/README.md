@@ -52,6 +52,21 @@ Synthetic examples:
 
 These files are hand-written toy circuits for public smoke testing and are not official benchmark cases.
 
+## Input format
+
+The scheduler accepts the small BLIF subset used by the public examples:
+
+```text
+.model <name>
+.inputs <input_1> <input_2> ...
+.outputs <output_1> <output_2> ...
+.names <input_1> <input_2> ... <output>
+<truth_table_row>
+.end
+```
+
+`.inputs` and `.outputs` declare node names. In the currently supported public subset, each `.names` block declares one output and is followed by the single truth-table row consumed by the parser; additional truth-table rows are not modeled. The parser classifies one-input blocks as `NOT`, and multi-input rows containing `-` as `OR`, otherwise as `AND`. Continuation lines ending in `\\` are joined before parsing. The command-line resource limits are integers in `AND_LIMIT OR_LIMIT NOT_LIMIT` order, and the public examples show the expected complete invocation.
+
 ## Notes
 
 This is an academic-scale coursework implementation. The public version is intended to show scheduling formulation and implementation structure without redistributing unauthorized benchmark files.

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="380" viewBox="0 0 1280 380" role="img" aria-labelledby="title desc">
+  <title id="title">Physical design flow with three coursework projects</title>
+  <desc id="desc">A simplified flow from logic synthesis and resource-constrained scheduling through placement, legalization, clock tree synthesis, and routing. ML-RCS, Placement Legalization, and CTS are highlighted.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef2ff"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#64748b"/>
+    </marker>
+    <style>
+      .title { font: 700 24px system-ui, -apple-system, Segoe UI, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 14px system-ui, -apple-system, Segoe UI, sans-serif; fill: #475569; }
+      .stage { font: 700 15px system-ui, -apple-system, Segoe UI, sans-serif; fill: #0f172a; }
+      .detail { font: 400 12px system-ui, -apple-system, Segoe UI, sans-serif; fill: #475569; }
+      .stage-inverse { font: 700 15px system-ui, -apple-system, Segoe UI, sans-serif; fill: #ffffff; }
+      .detail-inverse { font: 400 12px system-ui, -apple-system, Segoe UI, sans-serif; fill: #c7d2fe; }
+      .detail-inverse-green { font: 400 12px system-ui, -apple-system, Segoe UI, sans-serif; fill: #a7f3d0; }
+      .detail-inverse-orange { font: 400 12px system-ui, -apple-system, Segoe UI, sans-serif; fill: #fed7aa; }
+      .tag { font: 700 12px system-ui, -apple-system, Segoe UI, sans-serif; fill: #ffffff; }
+      .note { font: 400 12px system-ui, -apple-system, Segoe UI, sans-serif; fill: #334155; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="360" rx="20" fill="url(#bg)"/>
+  <text x="44" y="46" class="title">Simplified physical-design flow</text>
+  <text x="44" y="71" class="subtitle">Where the three coursework implementations fit (not a complete industrial flow)</text>
+
+  <g stroke="#94a3b8" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M214 165 H478"/>
+    <path d="M670 165 H706"/>
+    <path d="M898 165 H934"/>
+    <path d="M1126 165 H1130"/>
+  </g>
+
+  <path d="M345 230 V220 H460 V190 H478" stroke="#6366f1" stroke-width="2" stroke-dasharray="7 6" fill="none" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect x="44" y="116" width="170" height="98" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="129" y="148" text-anchor="middle" class="stage">Logic synthesis</text>
+    <text x="129" y="170" text-anchor="middle" class="detail">netlist / operations</text>
+    <text x="129" y="188" text-anchor="middle" class="detail">resource model</text>
+  </g>
+
+  <g>
+    <rect x="220" y="230" width="250" height="100" rx="14" fill="#312e81" stroke="#4338ca" stroke-width="2"/>
+    <rect x="236" y="242" width="72" height="24" rx="12" fill="#6366f1"/>
+    <text x="272" y="259" text-anchor="middle" class="tag">ML-RCS</text>
+    <text x="345" y="284" text-anchor="middle" class="stage-inverse">Upstream CAD scheduling</text>
+    <text x="345" y="306" text-anchor="middle" class="detail-inverse">resource-constrained logic operations</text>
+  </g>
+
+  <g>
+    <rect x="478" y="116" width="192" height="98" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="574" y="148" text-anchor="middle" class="stage">Global placement</text>
+    <text x="574" y="170" text-anchor="middle" class="detail">initial cell locations</text>
+    <text x="574" y="188" text-anchor="middle" class="detail">and overlaps</text>
+  </g>
+
+  <g>
+    <rect x="706" y="104" width="192" height="122" rx="14" fill="#065f46" stroke="#059669" stroke-width="2"/>
+    <rect x="722" y="118" width="124" height="24" rx="12" fill="#10b981"/>
+    <text x="784" y="135" text-anchor="middle" class="tag">Legalization</text>
+    <text x="802" y="171" text-anchor="middle" class="stage-inverse">Legal row / subrow</text>
+    <text x="802" y="191" text-anchor="middle" class="stage-inverse">assignment</text>
+    <text x="802" y="211" text-anchor="middle" class="detail-inverse-green">remove overlaps, limit displacement</text>
+  </g>
+
+  <g>
+    <rect x="934" y="104" width="192" height="122" rx="14" fill="#7c2d12" stroke="#ea580c" stroke-width="2"/>
+    <rect x="950" y="118" width="58" height="24" rx="12" fill="#f97316"/>
+    <text x="979" y="135" text-anchor="middle" class="tag">CTS</text>
+    <text x="1030" y="171" text-anchor="middle" class="stage-inverse">Clock-tree</text>
+    <text x="1030" y="191" text-anchor="middle" class="stage-inverse">synthesis</text>
+    <text x="1030" y="211" text-anchor="middle" class="detail-inverse-orange">wirelength / skew trade-off</text>
+  </g>
+
+  <text x="1140" y="160" class="stage">Routing</text>
+  <text x="1140" y="180" class="detail">wires</text>
+
+  <text x="44" y="356" class="note">Dashed link: ML-RCS is an upstream CAD scheduling exercise; Legalization and CTS are the physical-design stages implemented here.</text>
+</svg>

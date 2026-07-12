@@ -39,6 +39,22 @@ g++ -std=c++11 cts.cpp ClockTree.cpp Line.cpp Point.cpp flute.cpp -o cts
 
 See `examples/tiny.cts` for a small synthetic input. It is hand-written for public smoke testing and does not come from any official benchmark.
 
+## Input format
+
+The program accepts one whitespace-delimited file. The metadata tokens may appear before the point list in any order:
+
+```text
+.p <point_count>
+.dimx <core_width>
+.dimy <core_height>
+<source_x> <source_y>
+<sink_1_x> <sink_1_y>
+...
+<sink_(point_count-1)_x> <sink_(point_count-1)_y>
+```
+
+`.p` is the total number of points, including the source. The first coordinate pair is the clock source and the remaining `point_count - 1` pairs are sinks; coordinates and dimensions are parsed as integers. The parser only consumes these values, so no benchmark-specific footer is required. `examples/tiny.cts` is the smallest public example.
+
 The repository also includes a tiny synthetic case generator derived from the original coursework utility, cleaned so generated cases can be written outside the repository. Pass an explicit seed for reproducible output:
 
 ```bash

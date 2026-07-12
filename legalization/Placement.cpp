@@ -72,7 +72,7 @@ void Placement::readPlFile()
     std::string name;
     double x, y;
     std::string direction;
-    std::regex pattern(R"(^\s*(\S+)\s+([-+]?[0-9]*\.?[0-9]+)\s+([-+]?[0-9]*\.?[0-9]+)\s+:\s+(\S+)$)");
+    std::regex pattern(R"(^\s*(\S+)\s+([-+]?[0-9]*\.?[0-9]+)\s+([-+]?[0-9]*\.?[0-9]+)\s+:\s+(\S+)(?:\s+/FIXED)?\s*$)");
 
     while (std::getline(inFile, line))
     {

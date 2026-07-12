@@ -33,6 +33,10 @@ Only self-written source code, attribution notes, and high-level problem descrip
 
 ## Visuals
 
+The three projects map to different points around the early physical-design flow. This is a simplified orientation diagram, not a claim that the repository implements every stage:
+
+![Simplified physical-design flow showing ML-RCS, placement legalization, and CTS](assets/physical-design-flow.svg)
+
 | Project | Example |
 |---|---|
 | Clock Tree Synthesis | ![Clock tree example with green clock source and purple clock sinks](assets/cts-clock-tree.png) |
